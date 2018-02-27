@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TodoList from './todo-list';
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -18,15 +20,9 @@ export default class App extends React.Component {
     }
 
     render() {
-        const items = this.state.items.map((item, index) => (
-            <li className="todo-item" key={index}>
-                {item}
-            </li>
-        ));
-
         return (
             <div className="app">
-                <ul className="todo-list">{items}</ul>
+                <TodoList items={this.state.items} />
                 <form className="add-form" onSubmit={e => this.addItem(e)}>
                     <label htmlFor="textInput">Item to add</label>
                     <input
