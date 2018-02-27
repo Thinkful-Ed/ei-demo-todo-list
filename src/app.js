@@ -11,7 +11,9 @@ export default class App extends React.Component {
 
     addItem(e) {
         e.preventDefault();
-        console.log('Submit');
+        this.setState({
+            items: [...this.state.items, 'Make cake']
+        });
     }
 
     render() {
