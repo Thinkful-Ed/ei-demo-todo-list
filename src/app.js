@@ -9,6 +9,11 @@ export default class App extends React.Component {
         };
     }
 
+    addItem(e) {
+        e.preventDefault();
+        console.log('Submit');
+    }
+
     render() {
         const items = this.state.items.map((item, index) => (
             <li className="todo-item" key={index}>
@@ -19,7 +24,7 @@ export default class App extends React.Component {
         return (
             <div className="app">
                 <ul className="todo-list">{items}</ul>
-                <form className="add-form">
+                <form className="add-form" onSubmit={e => this.addItem(e)}>
                     <label htmlFor="textInput">Item to add</label>
                     <input type="text" id="textInput" />
                     <button>Add item</button>
