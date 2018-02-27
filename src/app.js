@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TodoList from './todo-list';
+import AddForm from './add-form';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -23,16 +24,10 @@ export default class App extends React.Component {
         return (
             <div className="app">
                 <TodoList items={this.state.items} />
-                <form className="add-form" onSubmit={e => this.addItem(e)}>
-                    <label htmlFor="textInput">Item to add</label>
-                    <input
-                        type="text"
-                        id="textInput"
-                        value={this.state.value}
-                        onChange={e => this.setState({value: e.target.value})}
-                    />
-                    <button>Add item</button>
-                </form>
+                <AddForm
+                    onInputUpdated={e => this.setState({value: e.target.value})}
+                    onItemAdd={e => this.addItem(e)}
+                />
             </div>
         );
     }
