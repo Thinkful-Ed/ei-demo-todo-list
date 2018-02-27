@@ -5,14 +5,15 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            items: ['Buy milk', 'Learn React', 'Profit']
+            items: ['Buy milk', 'Learn React', 'Profit'],
+            value: ''
         };
     }
 
     addItem(e) {
         e.preventDefault();
         this.setState({
-            items: [...this.state.items, this.input.value]
+            items: [...this.state.items, this.state.value]
         });
     }
 
@@ -31,7 +32,8 @@ export default class App extends React.Component {
                     <input
                         type="text"
                         id="textInput"
-                        ref={element => (this.input = element)}
+                        value={this.state.value}
+                        onChange={e => this.setState({value: e.target.value})}
                     />
                     <button>Add item</button>
                 </form>
