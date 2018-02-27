@@ -12,7 +12,7 @@ export default class App extends React.Component {
     addItem(e) {
         e.preventDefault();
         this.setState({
-            items: [...this.state.items, 'Make cake']
+            items: [...this.state.items, this.input.value]
         });
     }
 
@@ -28,7 +28,11 @@ export default class App extends React.Component {
                 <ul className="todo-list">{items}</ul>
                 <form className="add-form" onSubmit={e => this.addItem(e)}>
                     <label htmlFor="textInput">Item to add</label>
-                    <input type="text" id="textInput" />
+                    <input
+                        type="text"
+                        id="textInput"
+                        ref={element => (this.input = element)}
+                    />
                     <button>Add item</button>
                 </form>
             </div>
